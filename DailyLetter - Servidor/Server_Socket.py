@@ -30,14 +30,13 @@ s.listen(5)
 def boot_serv():
     while True:
         con, adr = s.accept()
-        while True:
-            msg = con.recv(1024)
-            msg = msg.decode()
-            if not msg:
-                break
-            if msg:
-                DB_Connect.registrar_mensagens(msg)
-                print('Nova mensagem registrada: ' + msg)
+        msg = con.recv(1024)
+        msg = msg.decode()
+        if not msg:
+          break
+        if msg:
+          DB_Connect.registrar_mensagens(msg)
+          print('Nova mensagem registrada: ' + msg)
 
 
 boot_serv()
